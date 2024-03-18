@@ -8,7 +8,6 @@ function App() {
 
   const handleEdit = (id) => {
     setStudentId(id)
-    console.log("Index", id)
   }
 
   const handleUpdateChange = (event) => {
@@ -25,25 +24,23 @@ function App() {
   }
 
   const handleUpdate = (i) => {
-    const editedForm = {
-      id : i,
-      name : editFormData.name,
-      department: editFormData.department,
-      school : editFormData.school
-    }
-    const newRecords = [...studentRecords];
-    console.log('newRecords', newRecords)
+    // const result = studentRecords.findIndex((student, index) => i === index)
+    // setStudentRecords([...studentRecords, result])
+    //setEditFormData(result)
+    // const name = event.target.name;
+    // const value = event.target.value;
+    // setEditFormData(values => ({...values, [name]: value}))
+    const records = [...studentRecords];
     const index = studentRecords.findIndex((student, index) => i === index);
-    // console.log('Index', index)
-    newRecords[index] = editedForm
-    console.log('2nd newRecords', newRecords)
-    setStudentRecords(newRecords)
-    setStudentId(null)
-    // console.log('studentRecords', studentRecords)
-    // console.log('Index', index)
-    // console.log('newRecords', newRecords)
-    console.log('records[index]', newRecords[index])
-    
+    records[index] = editFormData
+    console.log('studentRecords', studentRecords)
+    console.log('Index', index)
+    console.log('records', records)
+    console.log('records[index]', records[index])
+    // setEditFormData(records[index] )
+    // const filteredResut = studentRecords.filter((studentRecord, index) => id !== index)
+    studentRecords(records);
+    // setStudentId(null);
   }
 
   const handleSubmit = (event) => {
@@ -63,7 +60,7 @@ function App() {
           <input 
             type="text" 
             name="name" 
-            placeholder='Enter Name'
+            placeholder='Enater Name'
             value={formData.name || ""} 
             onChange={handleChange}
           />
@@ -105,35 +102,37 @@ function App() {
                       <td>
                         <input 
                           type="text" 
-                          name="name"
+                          name="editName"
                           // placeholder={studentRecord.name}
-                          value={editFormData.name || studentRecord.name} 
+                          value={editFormData.editName || studentRecord.name} 
                           onChange={handleUpdateChange}
                         />
                       </td>
                       <td>
                         <input 
                             type="text" 
-                            name="department"
+                            name="editDepartment"
                             // placeholder={studentRecord.department}
-                            value={editFormData.department || studentRecord.department} 
+                            value={editFormData.editDepartment || studentRecord.department} 
                             onChange={handleUpdateChange}
                           />
                       </td>  
                       <td>
                         <input 
                             type="text" 
-                            name="school"
+                            name="editSchool"
                             // placeholder={studentRecord.school}
-                            value={editFormData.school || studentRecord.school} 
+                            value={editFormData.editSchool || studentRecord.school} 
                             onChange={handleUpdateChange}
                           />
                       </td>                                                         
                       <td>
-                        <button onClick={() => handleUpdate(i)} style={{backgroundColor: "blue"}}>
+                        <button onClick={() => handleUpdate(i)} style={{backgroundColor: "red"}}>
                           Update
                         </button>
-                       
+                        <button onClick={() => handleDelete(i)} style={{backgroundColor: "red"}}>
+                          X
+                        </button>
                       </td>
                     </tr>
                   :
@@ -143,7 +142,7 @@ function App() {
                         <td>{studentRecord.department}</td>  
                         <td>{studentRecord.school}</td>                                                              
                         <td>
-                          <button onClick={() => handleEdit(i)} style={{backgroundColor: "green"}}>
+                          <button onClick={() => handleEdit(i)} style={{backgroundColor: "red"}}>
                             Edit
                           </button>
                           <button onClick={() => handleDelete(i)} style={{backgroundColor: "red"}}>
