@@ -8,7 +8,6 @@ function App() {
 
   const handleEdit = (id) => {
     setStudentId(id)
-    console.log("Index", id)
   }
 
   const handleUpdateChange = (event) => {
@@ -32,18 +31,11 @@ function App() {
       school : editFormData.school
     }
     const newRecords = [...studentRecords];
-    console.log('newRecords', newRecords)
     const index = studentRecords.findIndex((student, index) => i === index);
-    // console.log('Index', index)
     newRecords[index] = editedForm
-    console.log('2nd newRecords', newRecords)
     setStudentRecords(newRecords)
     setStudentId(null)
-    // console.log('studentRecords', studentRecords)
-    // console.log('Index', index)
-    // console.log('newRecords', newRecords)
-    console.log('records[index]', newRecords[index])
-    
+        
   }
 
   const handleSubmit = (event) => {
@@ -106,7 +98,6 @@ function App() {
                         <input 
                           type="text" 
                           name="name"
-                          // placeholder={studentRecord.name}
                           value={editFormData.name || studentRecord.name} 
                           onChange={handleUpdateChange}
                         />
@@ -115,7 +106,6 @@ function App() {
                         <input 
                             type="text" 
                             name="department"
-                            // placeholder={studentRecord.department}
                             value={editFormData.department || studentRecord.department} 
                             onChange={handleUpdateChange}
                           />
@@ -124,7 +114,6 @@ function App() {
                         <input 
                             type="text" 
                             name="school"
-                            // placeholder={studentRecord.school}
                             value={editFormData.school || studentRecord.school} 
                             onChange={handleUpdateChange}
                           />
