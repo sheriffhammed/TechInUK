@@ -1,10 +1,14 @@
-import StudentRecords from './StudentRecords'
-import './App.css'
+import StudentRecords from "./StudentRecords";
+// import ApiCall from "./ApiCall";
+import "./App.css";
 
 function App() {
-  
-  return <StudentRecords />
-
+  return (
+    <>
+      <StudentRecords />
+      {/* <ApiCall /> */}
+    </>
+  );
 }
 
-export default App
+export default App;
